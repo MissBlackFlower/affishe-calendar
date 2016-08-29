@@ -1,0 +1,120 @@
+// Normally mainpage styles
+.footer
+  float: left
+  width: 100%
+  border-top: 3px solid $brown
+  background-color: $black
+  background: url(../img/footer-bg.png) center/cover no-repeat $black
+  &__main
+    max-width: 1440px
+    margin: auto
+    +clr
+    padding: 38px 81px 15px 98px
+  &__logo
+    float: left
+    width: 26.7%
+    .logo-img
+      float: left
+      max-width: 282px
+      min-width: 232px
+      max-height: 105px
+  &__menu
+    padding-top: 22px
+    float: left
+    .menu-item
+      display: inline-block
+      vertical-align: top
+      padding: 0 27px
+    .menu-link
+      display: block
+      margin-bottom: 22px
+      +R3
+      font-size: 16px
+      line-height: 21px
+      color: $white
+  &__drop
+    .drop-item
+      transition: all .1s
+      &:hover
+        .drop-link
+          opacity: 1
+    .drop-link
+      display: block
+      margin-bottom: 7px
+      +R3
+      font-size: 16px
+      line-height: 21px
+      opacity: 0.5
+      color: $white
+  &__socials
+    float: right
+    padding-top: 18px
+    .social__link
+      &:hover,
+      &:active
+        color: $brown
+  &__info
+    width: 100%
+    border-top: 1px solid rgba(255, 255, 255, 0.1)
+    border-bottom: 1px solid rgba(255, 255, 255, 0.2)
+    text-align: center
+  &__info-box
+    display: inline-block
+    vertical-align: top
+    padding: 14px 20px 0 20px
+    text-align: left
+    @each $s in visa, maestro
+      .icon--#{$s}
+        +s(#{$s})
+  &__info-top
+    display: block
+    +R3
+    font-size: 14px
+    color: rgba(255, 255, 255, 0.5)
+    line-height: 1
+  &__info-bottom
+    display: block
+    +R3
+    font-size: 18px
+    line-height: 2.5
+    color: $white
+    a
+      +R3
+      font-size: 18px
+      line-height: 2.5
+      color: $white
+  &__copy
+    width: 100%
+    padding: 20px 0
+    +R3
+    font-size: 12px
+    opacity: 0.5
+    color: $white
+    line-height: 16px
+    text-align: center
+
+  +r(1330)
+    &__main
+      padding: 20px 50px
+  +r(1220)
+    text-align: center
+    &__logo,
+    &__menu,
+    &__socials
+      width: 100%
+      float: none
+      display: inline-block
+    &__logo
+      .logo-img
+        float: none
+        display: inline-block
+    .social__block
+      float: none
+      display: inline-block
+  +r(980)
+    &__info-box
+      width: 100%
+      text-align: center
+  +r(480)
+    &__main
+      padding: 10px 20px

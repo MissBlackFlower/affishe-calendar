@@ -1,0 +1,95 @@
+.affiche
+  &__title
+  &__calendar
+
+#calendar
+  max-width: 1200px
+  +clr
+
+.calBox
+  background-color: #fff
+  padding: 2px
+  position: relative
+  text-align: center
+  color: white
+  overflow: hidden
+
+
+.calElement
+  display: inline-block
+
+.calYear
+  .calElement
+
+
+.calMonth
+  width: 5%
+  float: left
+  padding-bottom: 2px
+  border-right: 1px solid rgba(0, 0, 0, 0.1)
+  border-left: 1px solid rgba(0, 0, 0, 0.1)
+  .calElement
+    font-size: 14px
+    color: rgba(0, 0, 0, 0.1)
+    line-height: 1.8
+    display: block
+    clear: both
+  .calElement:hover
+    cursor: pointer
+  .calElement.selected
+    color: #000
+
+
+.calDay
+  float: right
+  width: 95%
+  +R3
+  font-size: 11px
+  .calElement
+    color: #c3c6c8
+    margin: 0 5px
+  .calElement.prev
+    content: $icon-arr-l
+    width: 10px
+    height: 35px
+    float: left
+  .calElement.next
+    content: $icon-arr-r
+    width: 10px
+    height: 35px
+    float: right
+
+
+span.calElement.next:hover,
+span.calElement.prev:hover
+  cursor: pointer
+  background-color: #fff
+
+
+
+.calElement
+  .dayNumber
+    display: inline-block
+    width: 100%
+    font-size: 11px
+    line-height: 60px
+    background-color: #f2f6f8
+
+.calElement.selected
+  .dayNumber
+    background-color: #d24d57
+    color: #fff
+
+
+span.calElement:hover
+  .dayNumber
+    background-color: #d24d57
+    color: #fff
+    cursor: pointer
+
+
+.calElement.today
+.calElement.until
+  .dayNumber
+    background-color: #ba9158
+    color: #fff

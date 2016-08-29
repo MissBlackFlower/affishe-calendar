@@ -1,0 +1,47 @@
+@font-face
+	font-family: "svgfont"
+	src: url('fonts/svgfont.eot')
+	src: url('fonts/svgfont.eot?#iefix') format('eot'), url('fonts/svgfont.woff') format('woff'), url('fonts/svgfont.woff2') format('woff2'), url('fonts/svgfont.ttf') format('truetype')
+	font-weight: normal
+	font-style: normal
+
+$icon-arr-r: "\EA01"
+$icon-email: "\EA02"
+$icon-fb: "\EA03"
+$icon-more: "\EA04"
+$icon-ticket: "\EA05"
+$icon-tw: "\EA06"
+$icon-calendar: "\EA07"
+$icon-arr-l: "\EA08"
+
+
+%icon
+	font-family: "svgfont"
+	font-style: normal
+	font-weight: normal
+	text-rendering: auto
+	speak: none
+	line-height: 1
+	-webkit-font-smoothing: antialiased
+	-moz-osx-font-smoothing: grayscale
+
+.icon, [class^="icon-"], [class*=" icon-"]
+	@extend %icon
+	display: inline-block
+
+.icon-arr-r:before
+	content: $icon-arr-r
+.icon-email:before
+	content: $icon-email
+.icon-fb:before
+	content: $icon-fb
+.icon-more:before
+	content: $icon-more
+.icon-ticket:before
+	content: $icon-ticket
+.icon-tw:before
+	content: $icon-tw
+.icon-calendar:before
+	content: $icon-calendar
+.icon-arr-l:before
+	content: $icon-arr-l

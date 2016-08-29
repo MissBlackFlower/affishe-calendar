@@ -1,0 +1,193 @@
+// # SHORT HOWTO
+// ## Sprites
+//     .whatever
+// 			+s(codedby)
+// ## gradient example
+//     	+g(#232323, #5c5c5c);
+//	   horizontal
+//     	+gh(#232323, #5c5c5c);
+// ## making bw-images
+//     img
+//			@extend %gray
+// ## predefined media-queries: https://github.com/paranoida/sass-mediaqueries
+//     +r(320)
+//			display: none
+// +max-screen(1000), +iphone5, +iphone4, +ipad-retina, +ipad, +hdpi - also available
+//
+// ## use cycles
+//     @for $i from 1 through 3
+//       .item-#{$i}
+//			width: 2em * $i;
+//     @each $s in a,b,c
+// 	    	#{$s}
+//				display: none
+// ## fonts
+// Save fonts to /src/fonts
+// +font(book, cytiapro-black-webfont)
+// and create mixin
+// =book
+// 	font-family: "book", Arial, sans-serif
+
+// fonts
++font(Roboto-Thin, roboto-thin)
++font(Roboto-ThinItalic, roboto-thinitalic)
++font(Roboto-Light, roboto-light)
++font(Roboto-LightItalic, roboto-lightitalic)
++font(Roboto-Regular, roboto-regular)
++font(Roboto-Medium, roboto-medium)
++font(Roboto-MediumItalic, roboto-mediumitalic)
++font(Roboto-Bold, roboto-bold)
++font(Roboto-BoldItalic, roboto-bolditalic)
++font(Roboto-Black, roboto-black)
++font(Roboto-BlackItalic, roboto-blackitalic)
+
+// fonts mixins
+=R1
+	font-family: 'Roboto-Thin', sans-serif
+=R1i
+	font-family: 'Roboto-ThinItalic', sans-serif
+=R2
+	font-family: 'Roboto-Light', sans-serif
+=R2i
+	font-family: 'Roboto-LightItalic', sans-serif
+=R3
+	font-family: 'Roboto-Regular', sans-serif
+=R4
+	font-family: 'Roboto-Medium', sans-serif
+=R4i
+	font-family: 'Roboto-MediumItalic', sans-serif
+=R5
+	font-family: 'Roboto-Bold', sans-serif
+=R5i
+	font-family: 'Roboto-BoldItalic', sans-serif
+=R6
+	font-family: 'Roboto-Black', sans-serif
+=R6i
+	font-family: 'Roboto-BlackItalic', sans-serif
+
+// colors variables
+
+$black: #000
+$white: #fff
+$gray: #f2f6f8
+$subtext: #848484
+$gray-icon: #eceeef
+$blue: #3C5A96
+$brown: #ba9158
+$dark-brown: #9d7a4a
+$red: #D24D57
+$red-hover: #c24750
+$header-bg: rgba(242, 246, 248, 0.5)
+$lang: rgba(0, 0, 0, 0.05)
+
+// common elements
+
+body
+	+R3
+	font-size: 18px
+	line-height: 27px
+	+r(780)
+		font-size: 14px
+		line-height: 1.5
+
+a
+	text-decoration: none
+	color: inherit
+
+// titte H1
+h4
+	display: inline-block
+	width: 100%
+	+R4
+	font-size: 36px
+	font-weight: normal
+	line-height: 1.5
+// titte_sec H2
+h5
+	display: inline-block
+	width: 100%
+	+R4
+	font-size: 24px
+	line-height: 40.5px
+	font-weight: normal
+	color: $black
+
+.link
+	+R3
+	font-size: 16px
+	line-height: 27px
+	color: $red
+	&:hover
+		color: $red-hover
+
+.label
+	+R3
+	font-size: 16px
+	line-height: 27px
+	color: $black
+
+.subtext
+	+R3
+	font-size: 16px
+	line-height: 25px
+	color: $subtext
+
+// common blocks
+.btn-nav
+	display: none
+
+.out
+	max-width: 1440px
+	margin: auto
+	overflow: hidden
+	+clr
+
+.content
+	width: 100%
+	padding: 0 90px
+	+clr
+	+r(780)
+		padding: 0 10px
+
+.social
+	&__block
+		float: left
+		margin-left: 10px
+	&__link
+		display: inline-block
+		font-size: 30px
+		color: $gray-icon
+		transition: color .01s linear
+
+.more,
+.ticket
+	position: absolute
+	right: 0
+	bottom: 0
+	height: 60px
+	color: $white
+	i
+		text-align: center
+		float: right
+		font-size: 36px
+		width: 60px
+		line-height: 60px
+		vertical-align: middle
+		background-color: $brown
+	.more-hover
+		display: none
+		float: right
+		padding: 0 20px
+		line-height: 60px
+		background-color: $dark-brown
+		+R3
+		font-size: 18px
+		font-weight: normal
+	&:hover
+		.more-hover
+			display: block
+.ticket
+	i
+		background-color: $red
+	.more-hover
+		background-color: $red-hover

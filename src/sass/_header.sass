@@ -1,0 +1,162 @@
+.header
+  width: 100%
+  background-color: $header-bg
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.5)
+  &__wrap
+    max-width: 1440px
+    margin: auto
+  &__top-side
+    width: 100%
+    position: relative
+    padding: 12px 81px 9px 98px
+    +clr
+  &__logo
+    float: left
+    width: 60%
+    .logo-img
+      float: left
+      max-width: 622px
+      min-width: 232px
+      max-height: 99px
+  &__btns
+    float: right
+    padding-top: 34px
+    .is-active
+      background-color: $red
+      color: $white
+  &__lang
+    float: right
+    height: 30px
+    width: 60px
+    margin-right: 10px
+    +R3
+    font-size: 14px
+    line-height: 30px
+    text-align: center
+    background-color: $lang
+    &:hover
+      background-color: $red-hover
+      color: $white
+  &__socials
+    float: right
+    .social__link
+      &:hover,
+      &:active
+        color: $blue
+  &__nav
+    padding-left: 100px
+    border-top: 1px solid rgba(0, 0, 0, 0.1)
+    .menu
+      width: 100%
+      +clr
+    .menu-item
+      position: relative
+      float: left
+      transition: all .1s
+      &:hover
+        background-color: $red-hover
+        .menu-link
+          color: $white
+        .header__drop
+          visibility: visible
+    .menu-link
+      display: block
+      +R3
+      padding: 19px 16px
+      font-size: 16px
+      line-height: 20px
+      color: $black
+      &:hover,
+      &:active
+        color: $white
+    .is-active
+      background-color: $red
+      .menu-link
+        color: $white
+  &__drop
+    position: absolute
+    top: 100%
+    visibility: hidden
+    z-index: 3500
+    .drop-item
+      background-color: $gray
+      padding: 19px 16px
+      transition: all .1s
+      &:hover
+        background-color: $red-hover
+        .drop-link
+          color: $white
+      &:active
+        background-color: $red
+        .drop-link
+          color: $white
+    .drop-link
+      +R3
+      font-size: 18px
+      line-height: 1
+      color: $black
+      white-space: nowrap
+    .is-active
+      background-color: $red
+      .drop-link
+        color: $white
+  +r(1330)
+    &__nav
+      display: none
+      padding: 0
+    &__top-side
+      padding: 10px 60px
+    &__socials
+      display: none
+    .btn-nav
+      display: block
+      width: 40px
+      height: 50px
+      background-color: transparent
+      color: $red
+      position: fixed
+      top: 30px
+      right: 0
+      z-index: 3000
+      &::before
+        content: ('\2630')
+        font-size: 30px
+        vertical-align: middle
+    .open-nav
+      display: block
+      position: fixed
+      background-color: $gray
+      border-bottom: 1px solid $red
+      top: 0
+      left: 50%
+      width: 100%
+      transform: translateX(-50%)
+      z-index: 2999
+      text-align: center
+      .menu
+        max-width: 320px
+        display: inline-block
+      .menu-item
+        width: 100%
+      .header__drop
+        position: static
+        visibility: visible
+        display: none
+  +r(800)
+    &__nav
+      padding-right: 40px
+    &__top-side
+      padding: 10px 50px
+    &__logo
+      width: 100%
+    &__btns
+      width: 100%
+    &__lang
+      width: 30%
+      margin: 0 10%
+  +r(550)
+    &__top-side
+      padding: 10px 40px 10px 0
+    &__lang
+      width: 50%
+      margin: 0
