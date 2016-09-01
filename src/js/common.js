@@ -52,7 +52,7 @@ var calendar = $("#calendar").calendarPicker({
     //callbackDelay:500,
     //years:1,
     months:1,
-    days:11.5,
+    days:11,
     //showDayArrows:false,
 });
 

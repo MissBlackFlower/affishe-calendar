@@ -27,21 +27,17 @@ html { -webkit-box-sizing: border-box; box-sizing: border-box; }
 
 .icon, [class^="icon-"], [class*=" icon-"] { display: inline-block; }
 
-.icon-arr-r:before { content: ""; }
+.icon-email:before { content: ""; }
 
-.icon-email:before { content: ""; }
+.icon-fb:before { content: ""; }
 
-.icon-fb:before { content: ""; }
+.icon-more:before { content: ""; }
 
-.icon-more:before { content: ""; }
+.icon-ticket:before { content: ""; }
 
-.icon-ticket:before { content: ""; }
+.icon-calendar:before { content: ""; }
 
 .icon-tw:before { content: ""; }
-
-.icon-calendar:before { content: ""; }
-
-.icon-arr-l:before { content: ""; }
 
 .slick-slider { position: relative; display: block; -webkit-box-sizing: border-box; box-sizing: border-box; -moz-box-sizing: border-box; -webkit-touch-callout: none; -webkit-user-select: none; -moz-user-select: none; -ms-user-select: none; user-select: none; -ms-touch-action: pan-y; touch-action: pan-y; -webkit-tap-highlight-color: transparent; }
 
@@ -300,32 +296,36 @@ h5 { display: inline-block; width: 100%; font-family: "Roboto-Medium", sans-seri
 .footer__info-bottom a { font-family: "Roboto-Regular", sans-serif; font-size: 18px; line-height: 2.5; color: #fff; }
 .footer__copy { width: 100%; padding: 20px 0; font-family: "Roboto-Regular", sans-serif; font-size: 12px; opacity: 0.5; color: #fff; line-height: 16px; text-align: center; }
 
-#calendar { max-width: 1200px; *zoom: 1; }
+.affiche__calendar { padding: 0 10px; }
+
+#calendar { width: 100%; *zoom: 1; }
 #calendar:after { content: " "; display: table; clear: both; }
 
-.calBox { background-color: #fff; padding: 2px; position: relative; text-align: center; color: white; overflow: hidden; }
+.calBox { background-color: #fff; position: relative; text-align: center; color: white; overflow: hidden; -webkit-user-select: none; -moz-user-select: none; -ms-user-select: none; user-select: none; }
 
-.calElement { display: inline-block; }
-
-.calMonth { width: 5%; float: left; padding-bottom: 2px; border-right: 1px solid rgba(0, 0, 0, 0.1); border-left: 1px solid rgba(0, 0, 0, 0.1); }
+.calMonth { width: 5%; position: absolute; left: 21px; border-right: 1px solid rgba(0, 0, 0, 0.1); border-left: 1px solid rgba(0, 0, 0, 0.1); }
 .calMonth .calElement { font-size: 14px; color: rgba(0, 0, 0, 0.1); line-height: 1.8; display: block; clear: both; }
 .calMonth .calElement:hover { cursor: pointer; }
 .calMonth .calElement.selected { color: #000; }
 
-.calDay { float: right; width: 95%; font-family: "Roboto-Regular", sans-serif; font-size: 11px; }
-.calDay .calElement { color: #c3c6c8; margin: 0 5px; }
-.calDay .calElement.prev { content: ""; width: 10px; height: 35px; float: left; }
-.calDay .calElement.next { content: ""; width: 10px; height: 35px; float: right; }
+.calDay { float: right; width: 100%; font-family: "Roboto-Regular", sans-serif; font-size: 11px; padding: 0 21px 0 7%; }
+.calDay .before { display: inline-block; vertical-align: top; padding: 0 5px; height: 60px; color: #000; font-family: "Roboto-Regular", sans-serif; font-size: 14px; line-height: 60px; }
+.calDay .calElement { color: #c3c6c8; margin: 0 5px; display: inline-block; }
+.calDay .calElement.prev, .calDay .calElement.next { width: 10px; height: 60px; margin: 0; position: absolute; top: 0; opacity: 0.1; }
+.calDay .calElement.prev { background: url(../img/arr-l.png) #fff no-repeat center center; left: 0; }
+.calDay .calElement.next { background: url(../img/arr-r.png) #fff no-repeat center center; right: 0; }
 
-span.calElement.next:hover, span.calElement.prev:hover { cursor: pointer; background-color: #fff; }
+span.calElement.next:hover, span.calElement.prev:hover { opacity: 1; cursor: pointer; background-color: #fff; }
 
 .calElement .dayNumber { display: inline-block; width: 100%; font-size: 11px; line-height: 60px; background-color: #f2f6f8; }
 
-.calElement.selected .dayNumber { background-color: #d24d57; color: #fff; }
+.calElement.selected .dayNumber { background-color: #c24750; color: #fff; }
 
-span.calElement:hover .dayNumber { background-color: #d24d57; color: #fff; cursor: pointer; }
+.calElement.today .dayNumber { background-color: #d24d57; color: #fff; }
 
 .calElement.until .dayNumber { background-color: #ba9158; color: #fff; }
+
+span.calElement:hover .dayNumber { background-color: #d24d57; color: #fff; cursor: pointer; }
 
 .col-50 { float: left; width: 50%; *zoom: 1; }
 .col-50:after { content: " "; display: table; clear: both; }

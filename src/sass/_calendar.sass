@@ -1,31 +1,30 @@
 .affiche
   &__title
   &__calendar
+    padding: 0 10px
 
 #calendar
-  max-width: 1200px
+  width: 100%
   +clr
 
 .calBox
   background-color: #fff
-  padding: 2px
   position: relative
   text-align: center
   color: white
   overflow: hidden
+  user-select: none
 
 
 .calElement
-  display: inline-block
 
 .calYear
   .calElement
 
-
 .calMonth
   width: 5%
-  float: left
-  padding-bottom: 2px
+  position: absolute
+  left: 21px
   border-right: 1px solid rgba(0, 0, 0, 0.1)
   border-left: 1px solid rgba(0, 0, 0, 0.1)
   .calElement
@@ -42,26 +41,42 @@
 
 .calDay
   float: right
-  width: 95%
+  width: 100%
   +R3
   font-size: 11px
+  padding: 0 21px 0 7%
+  .before
+    display: inline-block
+    vertical-align: top
+    padding: 0 5px
+    height: 60px
+    color: #000
+    +R3
+    font-size: 14px
+    line-height: 60px
   .calElement
     color: #c3c6c8
     margin: 0 5px
-  .calElement.prev
-    content: $icon-arr-l
-    width: 10px
-    height: 35px
-    float: left
+    display: inline-block
+  .calElement.prev,
   .calElement.next
-    content: $icon-arr-r
     width: 10px
-    height: 35px
-    float: right
+    height: 60px
+    margin: 0
+    position: absolute
+    top: 0
+    opacity: 0.1
+  .calElement.prev
+    background: url(../img/arr-l.png) #fff no-repeat center center
+    left: 0
+  .calElement.next
+    background: url(../img/arr-r.png) #fff no-repeat center center
+    right: 0
 
 
 span.calElement.next:hover,
 span.calElement.prev:hover
+  opacity: 1
   cursor: pointer
   background-color: #fff
 
@@ -77,19 +92,19 @@ span.calElement.prev:hover
 
 .calElement.selected
   .dayNumber
+    background-color: #c24750
+    color: #fff
+.calElement.today
+  .dayNumber
     background-color: #d24d57
     color: #fff
-
+.calElement.until
+  .dayNumber
+    background-color: #ba9158
+    color: #fff
 
 span.calElement:hover
   .dayNumber
     background-color: #d24d57
     color: #fff
     cursor: pointer
-
-
-.calElement.today
-.calElement.until
-  .dayNumber
-    background-color: #ba9158
-    color: #fff

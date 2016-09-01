@@ -109,7 +109,7 @@ jQuery.fn.calendarPicker = function(options) {
       var t = new Date();
       divMonths.empty();
       var oldday = date.getDay();
-      var nc = options.months*2+1;
+      // var nc = options.months*2+1;
       // var w = parseInt((theDiv.width()-4-(nc)*4)/nc)+"px"; в нашем варианте элементы в блоке месяца занимают 100% ширины
       var w = 100 + '%' ;
       for (var i = -options.months; i <= options.months; i++) {
@@ -145,8 +145,8 @@ jQuery.fn.calendarPicker = function(options) {
       divDays.empty();
       var nc = options.days*2+1;
       // var w = parseInt((theDiv.width()-4-(options.showDayArrows?12:0)-(nc)*4)/(nc-(options.showDayArrows?2:0)))+"px";
-      var w = parseInt((theDiv.width()-(theDiv.width()*0.05)-(10*nc))/(nc+(options.showDayArrows?2:0)))+"px";
-      //  от ширины блока отнимаем ширину блока с месяцами и отнимаем margin умноженный на количество дней, это все делим на количество дней, если включены стрелки то к количеству прибавляем 2
+      var w = parseInt((theDiv.width()-(theDiv.width()*0.07)-(10*nc))/(nc))+"px";
+      //  от ширины блока отнимаем ширину равную margin с левой стороны и отнимаем margin умноженный на количество дней, это все делим на количество дней
       for (var i = -options.days; i <= options.days; i++) {
         var d = new Date(date);
         d.setDate(day + i);
@@ -154,6 +154,9 @@ jQuery.fn.calendarPicker = function(options) {
                                                             "millis": d.getTime(),
                                                             'date-on': (d.getDate()+'.'+(d.getMonth()+1)+'.'+d.getFullYear())
                                                           });
+        var month,
+          currentSpan;
+
         if (i == -options.days && options.showDayArrows) {
           span.addClass("prev");
         } else if (i == options.days && options.showDayArrows) {
@@ -166,10 +169,16 @@ jQuery.fn.calendarPicker = function(options) {
             span.addClass("selected");
           if (dayUntil > 0 && d.getYear() == t.getYear() && d.getMonth() == t.getMonth() && d.getDate() > t.getDate() && d.getDate() <= (t.getDate() + dayUntil))
               span.addClass("until");
+          if ( d.getDate() == 1 ){
+              span.addClass("first");
+              currentSpan = span.filter('.first');
+              month = $("<span>").addClass("before").html(options.monthNames[d.getMonth()]);
+            };
         }
         divDays.append(span);
-
       }
+      currentSpan.before(month);
+      // вставляем название месяца перед спаном первого дня месяца
     }
 
     var deferredCallBack = function() {
@@ -182,7 +191,6 @@ jQuery.fn.calendarPicker = function(options) {
         }, options.callbackDelay);
       }
     }
-
 
     fillYears(date);
     fillMonths(date);
@@ -199,101 +207,12 @@ jQuery.fn.calendarPicker = function(options) {
     }
   });
 
-
-  //if mousewheel
-  if ($.event.special.mousewheel && options.useWheel) {
-    divYears.mousewheel(function(event, delta) {
-      var d = new Date(calendar.currentDate.getTime());
-      d.setFullYear(d.getFullYear() + delta);
-      calendar.changeDate(d);
-      return false;
-    });
-    divMonths.mousewheel(function(event, delta) {
-      var d = new Date(calendar.currentDate.getTime());
-      d.setMonth(d.getMonth() + delta);
-      calendar.changeDate(d);
-      return false;
-    });
-    divDays.mousewheel(function(event, delta) {
-      var d = new Date(calendar.currentDate.getTime());
-      d.setDate(d.getDate() + delta);
-      calendar.changeDate(d);
-      return false;
-    });
-  }
-
-
   calendar.changeDate(options.date);
 
   return calendar;
 };
 
 /* end of file calendarPicker */
-
-/*! Copyright (c) 2009 Brandon Aaron (http://brandonaaron.net)
- * Dual licensed under the MIT (http://www.opensource.org/licenses/mit-license.php)
- * and GPL (http://www.opensource.org/licenses/gpl-license.php) licenses.
- * Thanks to: http://adomas.org/javascript-mouse-wheel/ for some pointers.
- * Thanks to: Mathias Bank(http://www.mathias-bank.de) for a scope bug fix.
- *
- * Version: 3.0.2
- *
- * Requires: 1.2.2+
- */
-
-/* плагин дает возможность скролить календарь*/
-
-(function($) {
-
-var types = ['DOMMouseScroll', 'mousewheel'];
-
-$.event.special.mousewheel = {
-	setup: function() {
-		if ( this.addEventListener )
-			for ( var i=types.length; i; )
-				this.addEventListener( types[--i], handler, false );
-		else
-			this.onmousewheel = handler;
-	},
-
-	teardown: function() {
-		if ( this.removeEventListener )
-			for ( var i=types.length; i; )
-				this.removeEventListener( types[--i], handler, false );
-		else
-			this.onmousewheel = null;
-	}
-};
-
-$.fn.extend({
-	mousewheel: function(fn) {
-		return fn ? this.bind("mousewheel", fn) : this.trigger("mousewheel");
-	},
-
-	unmousewheel: function(fn) {
-		return this.unbind("mousewheel", fn);
-	}
-});
-
-
-function handler(event) {
-	var args = [].slice.call( arguments, 1 ), delta = 0, returnValue = true;
-
-	event = $.event.fix(event || window.event);
-	event.type = "mousewheel";
-
-	if ( event.wheelDelta ) delta = event.wheelDelta/120;
-	if ( event.detail     ) delta = -event.detail/3;
-
-	/* Add events and delta to the front of the arguments */
-	args.unshift(event, delta);
-
-	return $.event.handle.apply(this, args);
-}
-
-})(jQuery);
-
-/* end file mousewheel */
 
 $(document).ready(function() {
 
@@ -349,7 +268,7 @@ var calendar = $("#calendar").calendarPicker({
     //callbackDelay:500,
     //years:1,
     months:1,
-    days:11.5,
+    days:11,
     //showDayArrows:false,
 });
 
